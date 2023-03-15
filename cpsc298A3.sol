@@ -36,5 +36,8 @@ contract CountContract {
     // check if the actual value matches the expected value
     require(actualCount == 42, "getCount should return 42");
   }
+  
+  // check assignment 6 push
+ 
 
 }
