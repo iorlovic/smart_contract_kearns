@@ -8,6 +8,9 @@ import "openzeppelin-contracts/contracts/access/Ownable.sol";
   By default, the owner of an Ownable contract is the account that deployed it.
 */
 contract Treasury is Ownable {
+
+    uint256 private count;
+
     // Function to deposit Ether into the contract
     function deposit() external payable {
         require(
@@ -49,5 +52,9 @@ contract Treasury is Ownable {
     // Function to get the contract balance
     function getBalance() external view returns (uint256) {
         return address(this).balance;
+    }
+
+    function getCount() external view returns (uint256) {
+        return count;
     }
 }
