@@ -2,14 +2,19 @@
 pragma solidity ^0.8.4;
 
 import "openzeppelin-contracts/contracts/access/Ownable.sol";
-
+import "./TokenPayable.sol";
 
 /*
   By default, the owner of an Ownable contract is the account that deployed it.
 */
+<<<<<<< HEAD
 contract Treasury is Ownable {
 
     uint256 private count;
+=======
+contract Treasury is Ownable, TokenPayable {
+    constructor(address _token) TokenPayable(_token) {}
+>>>>>>> ec2f899e662a7150280157979ada2295af8d46e4
 
     // Function to deposit Ether into the contract
     function deposit() external payable {
@@ -17,7 +22,6 @@ contract Treasury is Ownable {
             msg.value > 0,
             "Treasury: Deposit amount should be greater than zero"
         );
-
 
         // The balance of the contract is automatically updated
     }
@@ -33,7 +37,6 @@ contract Treasury is Ownable {
             "Treasury: Not enough balance to withdraw"
         );
 
-
         (bool send, ) = receiver.call{value: amount}("");
         require(send, "To receiver: Failed to send Ether");
     }
@@ -43,18 +46,41 @@ contract Treasury is Ownable {
         uint256 balance = address(this).balance;
         require(balance > 0, "Treasury: No balance to withdraw");
 
-
         (bool send, ) = msg.sender.call{value: balance}("");
         require(send, "To owner: Failed to send Ether");
     }
-
 
     // Function to get the contract balance
     function getBalance() external view returns (uint256) {
         return address(this).balance;
     }
 
+<<<<<<< HEAD
     function getCount() external view returns (uint256) {
         return count;
+=======
+    // TokenPayable functions
+    function approveToken(uint256 _amount) external onlyOwner {
+        _approveToken(_amount);
+    }
+
+    function getTokenBalance() external view returns (uint256) {
+        return _getTokenBalance();
+    }
+
+    function depositToken(uint256 _amount) external {
+        _depositToken(_amount);
+    }
+
+    function withdrawToken(
+        uint256 _amount,
+        address _receiver
+    ) external onlyOwner {
+        _withdrawToken(_amount, _receiver);
+    }
+
+    function withdrawAllToken() external onlyOwner {
+        _withdrawAllToken();
+>>>>>>> ec2f899e662a7150280157979ada2295af8d46e4
     }
 }
