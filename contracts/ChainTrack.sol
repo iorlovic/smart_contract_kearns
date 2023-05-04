@@ -52,6 +52,13 @@ contract ChainTrack {
         emit MaterialCreated(materialCounter, description);
     }
 
+    // Add this function to ChainTrack.sol
+    function getMaterial(uint256 _id) public view returns (Material memory) {
+        return materials[_id];
+    }
+
+
+
     // Transfer a material to the next role in the supply chain
     function transferMaterial(uint256 id, address to) public {
         require(materials[id].currentDestination == msg.sender, "Material not at your location");

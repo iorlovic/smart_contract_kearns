@@ -7,14 +7,9 @@ import "./TokenPayable.sol";
 /*
   By default, the owner of an Ownable contract is the account that deployed it.
 */
-<<<<<<< HEAD
 contract Treasury is Ownable {
 
     uint256 private count;
-=======
-contract Treasury is Ownable, TokenPayable {
-    constructor(address _token) TokenPayable(_token) {}
->>>>>>> ec2f899e662a7150280157979ada2295af8d46e4
 
     // Function to deposit Ether into the contract
     function deposit() external payable {
@@ -55,32 +50,7 @@ contract Treasury is Ownable, TokenPayable {
         return address(this).balance;
     }
 
-<<<<<<< HEAD
     function getCount() external view returns (uint256) {
         return count;
-=======
-    // TokenPayable functions
-    function approveToken(uint256 _amount) external onlyOwner {
-        _approveToken(_amount);
-    }
-
-    function getTokenBalance() external view returns (uint256) {
-        return _getTokenBalance();
-    }
-
-    function depositToken(uint256 _amount) external {
-        _depositToken(_amount);
-    }
-
-    function withdrawToken(
-        uint256 _amount,
-        address _receiver
-    ) external onlyOwner {
-        _withdrawToken(_amount, _receiver);
-    }
-
-    function withdrawAllToken() external onlyOwner {
-        _withdrawAllToken();
->>>>>>> ec2f899e662a7150280157979ada2295af8d46e4
     }
 }
