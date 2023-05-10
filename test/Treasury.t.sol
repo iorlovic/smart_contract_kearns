@@ -21,7 +21,8 @@ contract TreasuryTest is Test {
         owner = address(7);
         vm.startPrank(owner);
 
-        treasury = new Treasury(token_address);
+        //treasury = new Treasury(token_address);
+        token_address = address(0x1234567890123456789012345678901234567890); // temporary address
         contractAddress = address(treasury);
 
         vm.stopPrank();
