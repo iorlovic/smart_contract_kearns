@@ -40,7 +40,6 @@ Improved decision making: Automated systems provide access to data and analytics
 * Video: https://drive.google.com/file/d/1HXaItvszvJ06XThI_jEH7A4UtAT22yWq/view?usp=sharing
 * Presentation: https://docs.google.com/presentation/d/1i5Cew8z9swnQ3EiHf35ER9WW_BQ3xUAUUbHVe5KDslA/edit?usp=sharing
 
-
 ## Build and Execution Insructions 
 * npm run compile
 * npm run test
